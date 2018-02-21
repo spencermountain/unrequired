@@ -3,9 +3,9 @@ var fs = require('fs');
 var path = require('path');
 
 //use paths, so libs don't need a -g
-var browserify = './node_modules/.bin/browserify';
-var output = './_tmp-build.js';
-var tmpList = './_tmp-files.tsv';
+var browserify = path.resolve(__dirname, '../node_modules/.bin/browserify');
+var output = path.resolve(__dirname, '../_tmp-build.js');
+var tmpList = path.resolve(__dirname, '../_tmp-files.tsv');
 
 //
 const getUsed = function(input) {
@@ -26,7 +26,7 @@ const getUsed = function(input) {
   exec('source-map-explorer ' + output + ' --tsv > ' + tmpList);
 
   var files = fs.readFileSync(tmpList).toString().split('\n');
-  files = files.filter((str) => str[0] === '.' || str[0] === '/');
+  // files = files.filter((str) => str[0] === '.' || str[0] === '/');
   files = files.map((str) => {
     str = str.split('\t')[0];
     str = path.resolve(str);

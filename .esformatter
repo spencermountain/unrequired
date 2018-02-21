@@ -2,8 +2,7 @@
   "plugins": [
     "esformatter-quotes",
     "esformatter-parseint",
-    "esformatter-braces",
-    "esformatter-semicolons"
+    "esformatter-braces"
   ],
   "quotes": {
     "type": "single",
