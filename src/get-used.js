@@ -8,10 +8,12 @@ var output = path.resolve(__dirname, '../_tmp-build.js');
 var tmpList = path.resolve(__dirname, '../_tmp-files.tsv');
 
 //
-const getUsed = function(input) {
+var getUsed = function(input) {
   //cleanup. remove old builds
   if (fs.existsSync(output)) {
     exec('rm ' + output);
+  }
+  if (fs.existsSync(tmpList)) {
     exec('rm ' + tmpList);
   }
   exec('touch ' + output);
@@ -26,13 +28,14 @@ const getUsed = function(input) {
   exec('source-map-explorer ' + output + ' --tsv > ' + tmpList);
 
   var files = fs.readFileSync(tmpList).toString().split('\n');
-  // files = files.filter((str) => str[0] === '.' || str[0] === '/');
-  files = files.map((str) => {
+  files = files.map(function(str) {
     str = str.split('\t')[0];
     str = path.resolve(str);
     return str;
   });
-
+  files = files.filter(function(str) {
+    return str;
+  });
   //cleanup tmp files
   exec('rm ' + output + ' && rm ' + tmpList);
   return files;

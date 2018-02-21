@@ -7,12 +7,12 @@ var extensions = {
   '.jsx': true,
 };
 
-const walkSync = (dir, filelist = [] ) => {
+var walkSync = function(dir, filelist ) {
   var name = path.basename(dir);
   if (name === 'node_modules' || name[0] === '.') {
     return filelist;
   }
-  fs.readdirSync(dir).forEach(file => {
+  fs.readdirSync(dir).forEach(function(file) {
     filelist = fs.statSync(path.join(dir, file)).isDirectory()
       ? walkSync(path.join(dir, file), filelist)
       : filelist.concat(path.join(dir, file));
@@ -23,8 +23,8 @@ const walkSync = (dir, filelist = [] ) => {
 
 var getAll = function(entry) {
   var folder = path.dirname(entry);
-  let files = walkSync(folder, []);
-  files = files.filter((str) => {
+  var files = walkSync(folder, []);
+  files = files.filter(function(str) {
     var ext = path.extname(str);
     if (!ext || extensions[ext] !== true) {
       return false;
