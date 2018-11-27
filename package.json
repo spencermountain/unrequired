@@ -1,6 +1,6 @@
 {
   "name": "unrequired",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "find unused javascript files in your project",
   "main": "./src/index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "url": "git+https://github.com/spencermountain/unrequired.git"
   },
   "bin": {
-     "unrequired": "./src/index.js"
-   },
+    "unrequired": "./src/index.js"
+  },
   "keywords": [
     "browserify",
     "lint",
@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/spencermountain/unrequired#readme",
   "dependencies": {
-    "browserify": "^16.1.0",
-    "shelljs": "^0.8.1",
-    "source-map-explorer": "^1.5.0"
+    "browserify": "16.2.3",
+    "shelljs": "0.8.3",
+    "source-map-explorer": "1.6.0"
   }
 }

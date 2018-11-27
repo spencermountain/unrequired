@@ -1,3 +1,13 @@
+<div align="center">
+
+  <div>find unused javascript files</div>
+  <div><img src="https://cloud.githubusercontent.com/assets/399657/23590290/ede73772-01aa-11e7-8915-181ef21027bc.png" /></div>
+
+  <a href="https://npmjs.org/package/unrequired">
+    <img src="https://img.shields.io/npm/v/unrequired.svg?style=flat-square" />
+  </a>
+</div>
+
 in a big javascript project, sometimes you can forget to delete a unused file.
 
 linters and tree-shakers are good at finding unused code in a module, but they can allow you to have a whole unused file somewhere in your project.
