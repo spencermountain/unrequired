@@ -5,6 +5,9 @@ var extensions = {
   '.js': true,
   '.json': true,
   '.jsx': true,
+  '.mjs': true,
+  '.ts': true,
+  '.tsx': true,
 };
 
 var walkSync = function(dir, filelist ) {
@@ -24,11 +27,18 @@ var walkSync = function(dir, filelist ) {
 var getAll = function(entry) {
   var folder = path.dirname(entry);
   var files = walkSync(folder, []);
+
+  files = files.map((str) => {
+    return path.resolve(str);
+  })
+
   files = files.filter(function(str) {
+    //if not a javascript file
     var ext = path.extname(str);
     if (!ext || extensions[ext] !== true) {
       return false;
     }
+    //ignore package.json and hidden files
     var name = path.basename(str);
     if (!name) {
       return false;

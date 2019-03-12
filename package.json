@@ -4,14 +4,16 @@
   "description": "find unused javascript files in your project",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape ./tests/*.test.js | tap-dancer",
+    "run": "node ./scratch.js",
+    "watch": "node ./scratch.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spencermountain/unrequired.git"
   },
   "bin": {
-    "unrequired": "./src/index.js"
+    "unrequired": "./src/bin.js"
   },
   "keywords": [
     "browserify",
@@ -25,8 +27,17 @@
   },
   "homepage": "https://github.com/spencermountain/unrequired#readme",
   "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babelify": "^10.0.0",
     "browserify": "16.2.3",
+    "rollup": "^1.6.0",
     "shelljs": "0.8.3",
-    "source-map-explorer": "1.6.0"
+    "source-map-explorer": "1.7.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "tap-dancer": "^0.1.2",
+    "tape": "^4.10.1"
   }
 }

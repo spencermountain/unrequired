@@ -1,44 +1,56 @@
-var exec = require('shelljs').exec;
-var fs = require('fs');
 var path = require('path');
+var fs = require('fs');
+// var browserify = require('browserify');
+var exec = require('shelljs').exec;
+var srcMapExplorer = require('source-map-explorer')
 
 //use paths, so libs don't need a -g
 var browserify = path.resolve(__dirname, '../node_modules/.bin/browserify');
-var srcMapExplorer = path.resolve(__dirname, '../node_modules/.bin/source-map-explorer');
 var output = path.resolve(__dirname, '../_tmp-build.js');
-var tmpList = path.resolve(__dirname, '../_tmp-files.tsv');
 
-//
 var getUsed = function(input) {
-  //cleanup. remove old builds
-  if (fs.existsSync(output)) {
-    exec('rm ' + output);
-  }
-  if (fs.existsSync(tmpList)) {
-    exec('rm ' + tmpList);
-  }
-  exec('touch ' + output);
-  exec('touch ' + tmpList);
-
   //browserify + derequire
   var cmd = browserify + ' ' + input + ' --debug';
   cmd += ' >> ' + output;
   exec(cmd);
 
-  //inspect it
-  exec(srcMapExplorer + ' ' + output + ' --tsv > ' + tmpList);
+  // browserify({
+  //   entries: input,
+  //   debug: true
+  // })
+  //   .transform('babelify', {
+  //     presets: ['@babel/preset-env']
+  //   })
+  //   .bundle()
+  //   .pipe(fs.createWriteStream(output))
+  //   .on('finish', () => {
 
-  var files = fs.readFileSync(tmpList).toString().split('\n');
+
+  let files = srcMapExplorer(output, {
+    json: true
+  }).files
+  files = Object.keys(files)
+
   files = files.map(function(str) {
-    str = str.split('\t')[0];
     str = path.resolve(str);
     return str;
   });
+  //clean it up a bit
   files = files.filter(function(str) {
-    return str;
+    if (!str) {
+      return false
+    }
+    if (/_prelude.js$/.test(str)) {
+      return false
+    }
+    if (/<unmapped>$/.test(str)) {
+      return false
+    }
+    return true
   });
-  //cleanup tmp files
-  exec('rm ' + output + ' && rm ' + tmpList);
-  return files;
+  //cleanup tmp file
+  exec('rm ' + output);
+  // console.log(files)
+  return files
 };
 module.exports = getUsed;
