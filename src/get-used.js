@@ -1,14 +1,14 @@
 var exec = require('shelljs').exec;
 var path = require('path')
 var fs = require('fs')
-var output = path.resolve(__dirname, '../_tmp-build.js.map');
+var output = path.resolve(__dirname, '../_tmp-build.js');
 //
 const getUsed = function(input) {
   //build the file with rollup
-  let cmd = `./node_modules/.bin/rollup ${input} -c`
+  let cmd = `./node_modules/.bin/rollup ${input} -c --silent`
   exec(cmd)
   //parse the source map
-  let files = JSON.parse(fs.readFileSync(output)).sources
+  let files = JSON.parse(fs.readFileSync(output + '.map')).sources
   files.push(input)
   //resolve to absolute paths
   files = files.map(function(str) {
@@ -28,6 +28,8 @@ const getUsed = function(input) {
     }
     return true
   });
+  //cleanup tmp file
+  exec(`rm ${output} && rm ${output + '.map'}`);
   return files
 }
 module.exports = getUsed

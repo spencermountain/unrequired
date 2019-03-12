@@ -19,8 +19,22 @@ This script follows the require graph, and compares it to the `ls` output, to fi
 
 `unrequired ./path/to/my/index.js`
 
+or from a node script:
+```js
+const unrequired = require('unrequired')
+let result = unrequired('./tests/mjs/index.js')
+console.log(result)
+/*
+{
+  all:[ ... ],  // all javascript files from a 'ls'
+  used:[ ... ], // all files in the sourcemap bundle
+  unused:[],    // the diff between the two
+}
+*/
+```
+
 There are probably some caveats to this, but running it may be helpful in a large javascript project.
 
-It uses (💟) [browserify](http://browserify.org/) and [source-map-explorer](https://github.com/danvk/source-map-explorer).
+It uses [rollup](https://rollupjs.org) ⭐️
 
 MIT
