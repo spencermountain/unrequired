@@ -1,36 +1,16 @@
-var path = require('path');
-var fs = require('fs');
-// var browserify = require('browserify');
 var exec = require('shelljs').exec;
-var srcMapExplorer = require('source-map-explorer')
-
-//use paths, so libs don't need a -g
-var browserify = path.resolve(__dirname, '../node_modules/.bin/browserify');
-var output = path.resolve(__dirname, '../_tmp-build.js');
-
-var getUsed = function(input) {
-  //browserify + derequire
-  var cmd = browserify + ' ' + input + ' --debug';
-  cmd += ' >> ' + output;
-  exec(cmd);
-
-  // browserify({
-  //   entries: input,
-  //   debug: true
-  // })
-  //   .transform('babelify', {
-  //     presets: ['@babel/preset-env']
-  //   })
-  //   .bundle()
-  //   .pipe(fs.createWriteStream(output))
-  //   .on('finish', () => {
-
-
-  let files = srcMapExplorer(output, {
-    json: true
-  }).files
-  files = Object.keys(files)
-
+var path = require('path')
+var fs = require('fs')
+var output = path.resolve(__dirname, '../_tmp-build.js.map');
+//
+const getUsed = function(input) {
+  //build the file with rollup
+  let cmd = `./node_modules/.bin/rollup ${input} -c`
+  exec(cmd)
+  //parse the source map
+  let files = JSON.parse(fs.readFileSync(output)).sources
+  files.push(input)
+  //resolve to absolute paths
   files = files.map(function(str) {
     str = path.resolve(str);
     return str;
@@ -48,9 +28,6 @@ var getUsed = function(input) {
     }
     return true
   });
-  //cleanup tmp file
-  exec('rm ' + output);
-  // console.log(files)
   return files
-};
-module.exports = getUsed;
+}
+module.exports = getUsed

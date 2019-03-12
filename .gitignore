@@ -6,4 +6,4 @@ npm-debug.log
 package-lock.json
 .nyc_output
 _tmp-build.js
-_tmp-files.json
+_tmp-build.js.map

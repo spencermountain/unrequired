@@ -1,5 +1,6 @@
-var getUsed = require('./get-used.js');
-var getAll = require('./get-all.js');
+// var getUsed = require('./get-used.js');
+var getUsed = require('./get-used');
+var getAll = require('./get-all');
 
 //
 const unrequired = function(input) {
