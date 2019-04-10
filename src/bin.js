@@ -20,7 +20,7 @@ console.log('\nCompiling the javascript..\n');
 var result = unrequired(input)
 var all = result.all
 var used = result.used
-var diff = result.diff
+var diff = result.unused
 
 console.log('');
 console.log('found: ' + all.length + ' files');
