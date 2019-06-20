@@ -33,7 +33,13 @@ console.log(result)
 */
 ```
 
-There are probably some caveats to this, but running it may be helpful in a large javascript project.
+There are probably some caveats to this.
+
+It atleast attempts to support `esmodules`, `.mjs files`, and some other things.
+
+it won't catch any unrequired `.json` files.
+
+running it may be helpful in a large javascript project! who knows.
 
 It uses [rollup](https://rollupjs.org) ⭐️
 

@@ -1,1 +1,1 @@
-console.log('i\'m an unrequired .mjs file)
+console.log(`i'm an unrequired .mjs file`)

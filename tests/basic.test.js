@@ -25,15 +25,16 @@ test('json-loading', function(t) {
   t.end()
 })
 
+test('jsx', function(t) {
+  var result = unrequired(__dirname + '/jsx/index.js')
+  t.equal(result.all.length, 4, 'found 4 files')
+  t.equal(result.used.length, 3, 'found 3 used')
+  t.equal(result.unused.length, 1, 'found 1 unused')
+  t.end()
+})
+
 // test('ts', function(t) {
 //   var result = unrequired(__dirname + '/ts/index.js')
-//   t.equal(result.all.length, 4, 'found 4 files')
-//   t.equal(result.used.length, 3, 'found 3 used')
-//   t.equal(result.unused.length, 1, 'found 1 unused')
-//   t.end()
-// })
-// test('jsx', function(t) {
-//   var result = unrequired(__dirname + '/jsx/index.js')
 //   t.equal(result.all.length, 4, 'found 4 files')
 //   t.equal(result.used.length, 3, 'found 3 used')
 //   t.equal(result.unused.length, 1, 'found 1 unused')
