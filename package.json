@@ -3,6 +3,10 @@
   "version": "0.1.1",
   "description": "find unused javascript files in your project",
   "main": "./src/index.js",
+  "author": "spencermountain",
+  "bin": {
+    "unrequired": "./src/bin.js"
+  },
   "scripts": {
     "test": "tape ./tests/*.test.js | tap-dancer",
     "run": "node ./scratch.js",
@@ -12,28 +16,32 @@
     "type": "git",
     "url": "git+https://github.com/spencermountain/unrequired.git"
   },
-  "bin": {
-    "unrequired": "./src/bin.js"
+  "bugs": {
+    "url": "https://github.com/spencermountain/unrequired/issues"
   },
+  "homepage": "https://github.com/spencermountain/unrequired#readme",
   "keywords": [
     "code quality",
     "linter",
     "cleanup"
   ],
-  "author": "spencermountain",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/spencermountain/unrequired/issues"
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
   },
-  "homepage": "https://github.com/spencermountain/unrequired#readme",
   "dependencies": {
-    "rollup": "1.12.1",
+    "rollup": "1.15.6",
     "rollup-plugin-commonjs": "10.0.0",
-    "rollup-plugin-node-resolve": "5.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "5.0.3",
     "shelljs": "0.8.3"
   },
   "devDependencies": {
     "tap-dancer": "0.2.0",
-    "tape": "^4.10.1"
-  }
+    "tape": "4.10.2"
+  },
+  "license": "MIT"
 }

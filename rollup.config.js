@@ -1,5 +1,6 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import json from 'rollup-plugin-json'
 
 module.exports = {
   treeshake: false,
@@ -7,10 +8,7 @@ module.exports = {
     file: './_tmp-build.js',
     format: 'iife',
     name: 'MyModule',
-    sourcemap: true
+    sourcemap: true,
   },
-  plugins: [
-    resolve(),
-    commonjs()
-  ]
-};
+  plugins: [resolve(), commonjs(), json()],
+}
