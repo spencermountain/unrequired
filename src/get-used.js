@@ -1,12 +1,13 @@
 var exec = require('shelljs').exec
 var path = require('path')
 var fs = require('fs')
+
 var output = path.resolve(__dirname, '../_tmp-build.js')
 var config = path.resolve(__dirname, '../rollup.config.js')
 
 const getUsed = function(input) {
   //build the file with rollup
-  let cmd = `npx rollup ${input} -c ${config} --silent`
+  let cmd = `npx rollup ${input} -c ${config} --silent -o ${output}`
   exec(cmd)
   //parse the source map
   let files = JSON.parse(fs.readFileSync(output + '.map')).sources
