@@ -45,7 +45,7 @@ It atleast attempts to support `esmodules`, `.mjs files`, and some other things.
 it won't catch any unrequired `.json` files.
 
 ## See Also
-* [unused-webpack-plugin](https://github.com/MatthieuLemoine/unused-webpack-plugin)
-* [node-trucker](https://github.com/davidmfoley/node-trucker)
+* [unused-webpack-plugin](https://github.com/MatthieuLemoine/unused-webpack-plugin) by Matthieu Lemoine
+* [node-trucker](https://github.com/davidmfoley/node-trucker) by Dave Foley
 
 MIT
