@@ -33,14 +33,19 @@ console.log(result)
 */
 ```
 
-There are probably some caveats to this.
+running it may be helpful in a large javascript project! who knows.
+
+It uses [rollup](https://rollupjs.org) ⭐️
+
+### Caveats
+JSX, and other variants are not currently supported.
 
 It atleast attempts to support `esmodules`, `.mjs files`, and some other things.
 
 it won't catch any unrequired `.json` files.
 
-running it may be helpful in a large javascript project! who knows.
-
-It uses [rollup](https://rollupjs.org) ⭐️
+## See Also
+* [unused-webpack-plugin](https://github.com/MatthieuLemoine/unused-webpack-plugin)
+* [node-trucker](https://github.com/davidmfoley/node-trucker)
 
 MIT
