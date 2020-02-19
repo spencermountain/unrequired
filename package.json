@@ -1,6 +1,6 @@
 {
   "name": "unrequired",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "find unused javascript files in your project",
   "main": "./src/index.js",
   "author": "spencermountain",
