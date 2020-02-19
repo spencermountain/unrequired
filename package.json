@@ -1,6 +1,6 @@
 {
   "name": "unrequired",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "find unused javascript files in your project",
   "main": "./src/index.js",
   "author": "spencermountain",
@@ -36,11 +36,11 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "rollup": "1.15.6",
+    "rollup": "1.31.1",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "10.0.0",
+    "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "5.0.3",
+    "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-typescript": "^1.0.1",
     "shelljs": "0.8.3",
     "tslib": "^1.10.0",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "tap-dancer": "0.2.0",
-    "tape": "4.10.2"
+    "tape": "4.13.0"
   },
   "license": "MIT"
 }
