@@ -1,4 +1,12 @@
 <div align="center">
+  you may want to try the library <a href="https://github.com/smeijer/unimported">@smeijer/unimported</a> instead of this one.
+  <div>it's pretty great</div>
+</div>
+<!-- spacer -->
+<img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
+
+<div align="center">
 
   <div><code>unrequired</code></div>
   <div>find unused javascript files</div>
